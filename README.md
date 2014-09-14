@@ -8,8 +8,9 @@ This macro is already working,however there are still a few developments I would
 Change the permissions in MS Outlook in the Trust Center:
   * open File > Options > Trust Center > Trust Center Settings.. > Macro Settings
   * choose the security level "Notification for all macros"
+
 In order to open VBA in MS Outlook, click Alt+F11
-  Create a new module
+  * Create a new module
 
 #About the code
 Before to use it remember to:
