@@ -16,7 +16,8 @@ In order to open VBA in MS Outlook, click Alt+F11
 Before to use it remember to:
   * insert your windows username in the code
   * create a file where the macro can export the data
-  *assure that the sheet where you want to export the messages has the same name in the macro
+  * assure that the sheet where you want to export the messages has the same name in the macro
+
 Edit the code using what you need:
   * in VBA library you can find other criteria for Outlook.MailItem
   * I choose what I need: SenderName, SenderEmailAddress,Subject, To, ReceivedTime
