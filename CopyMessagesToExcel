@@ -1,0 +1,79 @@
+This is my first github code. Please read before the readme.md file before using it. Before to use this macro, remember to: 1.change your permissions in MS Outlook, 2.update your username (C:\Users\"USERNAME"\...) - see row ,3. create a new MS Excel file and copy the directory - see row ,4. change the name of sheet where you want to paste the datas - see row
+
+
+Option Explicit
+Sub CopyMessagesToExcel()
+Dim xlApp As Object
+Dim xlWB As Object
+Dim xlSheet As Object
+Dim rCount As Long
+Dim bXStarted As Boolean
+Dim enviro As String
+Dim strPath As String
+ 
+ Dim currentExplorer As Explorer
+Dim Selection As Selection
+Dim olItem As Outlook.MailItem
+Dim obj As Object
+Dim strColB, strColC, strColD, strColE, strColF As String
+               
+' Get Excel set up sugge
+enviro = CStr(Environ("USERNAME"))
+'the path of the workbook
+strPath = enviro & "…emails.xlsx"
+     On Error Resume Next
+     Set xlApp = GetObject(, "Excel.Application")
+     If Err <> 0 Then
+         Application.StatusBar = "Please wait while Excel source is opened ... "
+         Set xlApp = CreateObject("Excel.Application")
+         bXStarted = True
+     End If
+     On Error GoTo 0
+     'Open the workbook to input the data
+     Set xlWB = xlApp.Workbooks.Open(strPath)
+     Set xlSheet = xlWB.Sheets("Sheet1")
+    ' Process the message record
+    
+    On Error Resume Next
+'Find the next empty line of the worksheet
+rCount = xlSheet.Range("B" & xlSheet.Rows.Count).End(-4162).Row
+ 
+ 
+' get the values from outlook
+Set currentExplorer = Application.ActiveExplorer
+Set Selection = currentExplorer.Selection
+  For Each obj In Selection
+ 
+    Set olItem = obj
+   
+ 'collect the fields
+    strColB = olItem.SenderName
+    strColC = olItem.SenderEmailAddress
+    strColD = olItem.Subject
+    strColE = olItem.To
+    strColF = olItem.ReceivedTime
+ 
+'write them in the excel sheet
+  xlSheet.Range("B" & rCount) = strColB
+  xlSheet.Range("c" & rCount) = strColC
+  xlSheet.Range("d" & rCount) = strColD
+  xlSheet.Range("e" & rCount) = strColE
+  xlSheet.Range("f" & rCount) = strColF
+ 
+'Next row
+  rCount = rCount + 1
+ 
+ Next
+ 
+     xlWB.Close 1
+     If bXStarted Then
+         xlApp.Quit
+     End If
+    
+     Set olItem = Nothing
+     Set obj = Nothing
+     Set currentExplorer = Nothing
+     Set xlApp = Nothing
+     Set xlWB = Nothing
+     Set xlSheet = Nothing
+End Sub
