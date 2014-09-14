@@ -1,13 +1,15 @@
-#Export your selected MS Outlook Messages into a MS Excel File
-This is my first github code. Please read before the readme.md file before using it. Before to use this macro, remember to:
-1.change your permissions in MS Outlook,
-2.update your username (C:\Users\"USERNAME"\...) - see row 29,
-3. create a new MS Excel file and copy the directory - see row 31,
-4. change the name of sheet where you want to paste the datas - see row 42,
-5. open VBA in MS Outlook clicking Alt+F11 and createa new module where you will paste the following macro
-Ifyou enjoy it, feel free to contribute, contact me here or on twitter (@mauroberlanda)
+Thanks to this macro, you will be able to export your selected MS Outlook Messages into a MS Excel file.
+Please read the <a href="https://github.com/mrd1no/ExportOutlookMessages2Excel_MacroVBA/blob/master/README.md">readme.md</a> file before using it.
 
-#Macro
+Remember to:
+1.change your permissions in MS Outlook,
+2.update your username (C:\Users\"USERNAME"\...) - see row 31,
+3. create a new MS Excel file and copy the directory - see row 33,
+4. change the name of sheet where you want to paste the datas - see row 44,
+5. open VBA in MS Outlook clicking Alt+F11 and createa new module where you will paste the following macro
+
+
+<b>Macro</b>
 
 Option Explicit
 Sub CopyMessagesToExcel()
@@ -85,3 +87,5 @@ Set Selection = currentExplorer.Selection
      Set xlWB = Nothing
      Set xlSheet = Nothing
 End Sub
+
+<br> Feel you free to contact me on <a href="https://twitter.com/mauroberlanda">Twitter </a> or <a href="http://games4joke.wordpress.com/"> visit my blog</a>.
